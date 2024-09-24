@@ -163,7 +163,6 @@ header {
   width: 150px; /* Adjust the size as needed */
   height: 150px; /* Maintain aspect ratio */
   object-fit: cover; /* Ensures the photo covers the container */
-  object-position: 0 -30px; /* Crop the top by 30 pixels */
 }
 
 .header-right {
@@ -500,5 +499,24 @@ footer {
 
   .icon-link-paper {
     margin-top: 10px; /* Add space above the icons */
+  }
+}
+
+.lightbulb-image {
+  display: block; /* Centers the image horizontally */
+  margin: 15px auto; /* Add vertical spacing and center it horizontally */
+  width: 150px; /* Set a fixed width for the image */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.lightbulb-image:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+  filter: brightness(1.15); /* Brighten image on hover */
+}
+
+@media screen and (max-width: 600px) {
+  .lightbulb-image {
+    width: 70%; /* Make image responsive on small screens */
   }
 }
