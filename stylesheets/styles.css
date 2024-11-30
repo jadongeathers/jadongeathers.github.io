@@ -1,522 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;700&display=swap');
+
 body {
-  background-color: #fff;
-  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: #595959;
-  font-weight: 400;
-  padding: 50px; /* Full-screen padding */
-  box-sizing: border-box;
+    margin: 0;
+    font-family: 'STIX Two Text', serif;
+    color: black;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #222;
-  margin: 0 0 20px;
+.profile-picture-container {
+    display: inline-block; /* Wrap the image */
+    padding: 5px; /* Add space around the image */
+    border: 1px solid lightgray; /* Light gray border */
+    border-radius: 50%; /* Match the circular shape */
 }
 
-p, ul, ol, table, pre, dl {
-  margin: 0 0 20px;
+.profile-picture {
+    width: 150px; /* Set a fixed width */
+    height: 150px; /* Set a fixed height for cropping */
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensures the image fills the area without distortion */
+    display: block;
 }
 
-h1, h2, h3 {
-  line-height: 1.1;
-}
-
-h1 {
-  font-size: 26px;
-  font-weight: 600;
-}
-
-h2 {
-  color: #393939;
-  font-weight: 500;
-}
-
-h3, h4, h5, h6 {
-  color: #494949;
-  font-weight: 500;
-}
-
-h3 {
-  color: #393939;
-  font-weight: 500;
-  position: relative; /* Positioning context for the line */
-  margin-bottom: 15px; /* Add space below the header */
-  padding-bottom: 10px; /* Add some padding below the header text */
-}
-
-h3::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 75px; /* Length of the line */
-  height: 2px; /* Thickness of the line */
-  background-color: #910000; /* Color of the line */
-  border-radius: 2px; /* Optional: Round the edges of the line */
-}
-
-a {
-  color: rgb(204, 51, 51);
-  text-decoration: none;
-}
-
-a:hover {
-  color: rgb(112, 9, 9);
-}
-
-a small {
-  font-size: 11px;
-  color: #777;
-  margin-top: -0.3em;
-  display: block;
-}
-
-a:hover small {
-  color: #777;
-}
-
-.wrapper {
-  width: 80%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.content-wrapper {
-  display: flex;
-  align-items: flex-start;
-}
-
-blockquote {
-  border-left: 1px solid #e5e5e5;
-  margin: 0;
-  padding: 0 0 0 20px;
-  font-style: italic;
-}
-
-code, pre {
-  font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-  color: #333;
-}
-
-pre {
-  padding: 8px 15px;
-  background: #f8f8f8;
-  border-radius: 5px;
-  border: 1px solid #e5e5e5;
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  text-align: left;
-  padding: 5px 10px;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-dt {
-  color: #444;
-  font-weight: 500;
-}
-
-th {
-  color: #444;
-}
-
-img {
-  max-width: 100%;
-}
-
-/* header {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-  -webkit-font-smoothing: subpixel-antialiased;
-} */
-
-header {
-  display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center items vertically */
-  width: 100%; /* Full width of the page */
-  max-width: 1200px; /* Optional: Set a max-width for large screens */
-  margin: 0 auto; /* Center the header container horizontally */
-  margin-top: 20px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-
-.header-left, .header-right {
-  display: flex;
-  align-items: flex-start; /* Align items to the start of their flex container */
-}
-
-.header-left {
-  margin-right: 20px; /* Fixed distance between the profile picture and text */
-}
-
-.profile-photo {
-  padding: 5px;
-  border: 1px solid #595959;
-  width: 150px; /* Adjust the size as needed */
-  height: 150px; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensures the photo covers the container */
-}
-
-.header-right {
-  text-align: left; /* Align text to the left */
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-}
-
-.header-right h1, .header-right p {
-  margin: 5px;
-}
-
-
-header ul {
-  list-style: none;
-  height: 40px;
-  padding: 0;
-  background: #f4f4f4;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  width: 270px;
-  margin: 0 auto;
-}
-
-header li {
-  width: 89px;
-  float: left;
-  border-right: 1px solid #e0e0e0;
-  height: 40px;
-}
-
-header li:first-child a {
-  border-radius: 5px 0 0 5px;
-}
-
-header li:last-child a {
-  border-radius: 0 5px 5px 0;
-}
-
-header ul a {
-  line-height: 1;
-  font-size: 11px;
-  color: #999;
-  display: block;
-  text-align: center;
-  padding-top: 6px;
-  height: 34px;
-}
-
-header ul a:hover {
-  color: #999;
-}
-
-header ul a:active {
-  background-color: #f0f0f0;
-}
-
-strong {
-  color: #222;
-  font-weight: 500;
-}
-
-header ul li + li + li {
-  border-right: none;
-  width: 89px;
-}
-
-header ul a strong {
-  font-size: 14px;
-  display: block;
-  color: #222;
-}
-
-.icon-wrapper {
-  display: flex;
-  justify-content: flex-start; /* Align icons to the left */
-  margin-top: 10px; /* Add some space between the text and icons */
-}
-
-.icon-link {
-  margin-right: 12px; /* Space between the icons */
-  margin-left: 3px;
-  text-decoration: none; /* Remove underline from links */
-  transition: transform 0.2s ease-in-out; /* Smooth transformation */
-}
-
-.icon-link i {
-  font-size: 16px; /* Larger icon size */
-  padding: 7px; /* Add padding around the icons */
-  border-radius: 50%; /* Make them circular */
-  border:rgb(204, 51, 51) 1px solid;
-  width: 14px; /* Set equal width and height */
-  height: 14px; /* Set equal width and height */
-  display: inline-flex; /* Align icon centrally */
-  justify-content: center; /* Center the icon horizontally */
-  align-items: center; /* Center the icon vertically */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
-}
-
-.icon-link:hover i {
-  transform: scale(1.1); /* Slightly enlarge icon on hover */
-  background-color: #ffdada;
-  border-color: #910000;
-}
-
-.icon-link-paper {
-  margin-left: 10px; /* Space between the icons */
-  text-decoration: none; /* Remove underline from links */
-  transition: transform 0.2s ease-in-out; /* Smooth transformation */
-}
-
-.icon-link-paper i {
-  font-size: 14px; /* Larger icon size */
-  padding: 7px; /* Add padding around the icons */
-  border-radius: 50%; /* Make them circular */
-  border:rgb(204, 51, 51) 1px solid;
-  width: 12px; /* Set equal width and height */
-  height: 12px; /* Set equal width and height */
-  display: inline-flex; /* Align icon centrally */
-  justify-content: center; /* Center the icon horizontally */
-  align-items: center; /* Center the icon vertically */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
-}
-
-.icon-link-paper:hover i {
-  transform: scale(1.1); /* Slightly enlarge icon on hover */
-  background-color: #ffdada;
-  border-color: #910000;
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh; /* Add this to ensure container has height */
 }
 
 .sidebar {
-  width: 20%; /* Adjust width as needed */
-  padding-right: 30px;
-  position: sticky;
-  top: 20px; /* Distance from the top of the viewport */
-  align-self: flex-start;
+    width: 175px;
+    padding: 40px;
+    text-align: left;
+    flex-shrink: 0;
+    position: sticky;  /* Remove -webkit-sticky as it's not needed for modern browsers */
+    top: 0;           /* Change from 20px to 0 */
+    align-self: flex-start; /* Add this to ensure proper sticky behavior */
+    height: fit-content; /* Add this to contain sidebar content */
 }
 
-.main-content {
-  width: 80%; /* Adjust width as needed */
-  max-height: 80vh; /* Limit height to make it scrollable */
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding-left: 0;
-  margin-left: 0;
+.sidebar h3 {
+    margin: 10px 0;
+    font-weight: 700;
 }
 
-section {
-  width: 100%;
-  padding-bottom: 50px;
+.sidebar-bio {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #3a3a3a;
+    gap: 8px;
 }
 
-small {
-  font-size: 11px;
-}
-
-hr {
-  border: 0;
-  background: #e5e5e5;
-  height: 1px;
-  margin: 0 0 20px;
-}
-
-footer {
-  width: 100%;
-  position: static;
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 10px;
-  border-top: 1px solid #e5e5e5;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.sidebar > *:first-child,
-.main-content > *:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.announcement-list {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.announcement-list li {
-  margin-bottom: 15px;
-  font-size: 14px; /* Smaller text for announcements */
-  line-height: 1.5;
-}
-
-.announcement-date {
-  display: inline-block;
-  padding: 0px 6px; /* Smaller box */
-  margin-right: 8px;
-  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent box */
-  border-radius: 3px;
-  font-weight: bold;
-  color: #333;
-  font-size: 14px; /* Match smaller text size */
-}
-
-.announcement-list p {
-  display: inline;
-  margin: 0;
-  font-size: 14px; /* Ensure consistent smaller text size */
-  line-height: 1.75;
-}
-
-.autumn-color1 {
-  background-color: rgba(210, 105, 30, 0.4); /* Chocolate brown with 70% opacity */
-}
-
-.autumn-color2 {
-  background-color: rgba(255, 127, 80, 0.4); /* Coral with 70% opacity */
-}
-
-.autumn-color3 {
-  background-color: rgba(205, 133, 63, 0.4); /* Peru brown with 70% opacity */
-}
-
-.autumn-color4 {
-  background-color: rgba(139, 69, 19, 0.4); /* Saddle brown with 70% opacity */
-}
-
-/* Adjusted Breakpoint for single-column layout */
-@media screen and (max-width: 600px) { /* Adjusted breakpoint */
-  .content-wrapper {
-    flex-direction: column-reverse; /* Stack the sidebar below main content */
-  }
-
-  .sidebar, .main-content {
-    width: 100%;
+.links ul {
+    list-style: none;
     padding: 0;
-  }
-
-  .sidebar {
-    margin-bottom: 20px;
-  }
+    margin: 0;
 }
 
-/* Other media queries */
-@media screen and (max-width: 1200px) {
-  body {
-    padding: 30px; /* Slightly smaller padding */
-  }
-
-  .wrapper {
-    width: 90%; /* Increase content width */
-  }
+.links li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    line-height: 1.75;
+    margin: 5px 0;
+    color: #3a3a3a;
 }
 
-@media screen and (max-width: 960px) {
-  body {
-    padding: 20px; /* Even smaller padding */
-  }
-
-  .wrapper {
-    width: 95%; /* Further increase content width */
-  }
+.links li i {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-@media screen and (max-width: 720px) {
-  body {
-    padding: 15px; /* Minimal padding for small screens */
-  }
-
-  .wrapper {
-    width: 100%; /* Maximize content width */
-  }
+.links li a {
+    color: #3a3a3a;
+    text-decoration: none;
 }
 
-@media screen and (max-width: 480px) {
-  body {
-    padding: 10px; /* Almost no padding */
-  }
-
-  .wrapper {
-    width: 100%; /* Full width */
-  }
+.links li a:hover {
+    text-decoration: underline;
 }
 
-@media print {
-  body {
-    padding: 0.4in;
-    font-size: 12pt;
-    color: #444;
-  }
+.content {
+    flex: 3;
+    padding: 20px;
+    max-width: 800px; /* Default fixed size */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
 }
 
-.publications-list {
-  padding-left: 0; /* Remove padding from the list */
-  margin-left: 0;  /* Remove margin from the list */
-  list-style-type: none; /* Remove default list styling */
+.content p {
+    color: #3a3a3a;
+    font-size: 0.9rem;
 }
 
-.publications-list li {
-  display: flex;
-  align-items: center; /* Align the text to the top of the image */
-  margin-bottom: 15px; /* Space between list items */
-  line-height: 1.75; /* Line spacing for text */
-  padding-left: 0; /* Remove padding from the list */
-  margin-left: 0;  /* Remove margin from the list */
+/* First Fixed Size: Large Screens */
+@media (max-width: 1200px) {
+    .content {
+        max-width: 700px; /* Smaller fixed size for medium-large screens */
+    }
+    .sidebar {
+        margin-right: 10px; /* Slightly reduced space between sidebar and content */
+    }
 }
 
-.publication-photo {
-  width: 250px; /* Adjust the size of the image */
-  height: 250px; /* Maintain aspect ratio */
-  margin-right: 20px; /* Space between the image and the text */
-  object-fit: cover; /* Ensure the image covers its container */
+/* Second Fixed Size: Medium Screens */
+@media (max-width: 900px) {
+    .content {
+        max-width: 700px; /* Even smaller fixed size for medium screens */
+    }
+    .sidebar {
+        margin-right: 8px; /* Keep the sidebar close to the content */
+    }
 }
 
-.publications-list li div {
-  flex: 1; /* Ensure the text takes up the remaining space */
+/* Fully Responsive: Small Screens */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+        min-height: auto; /* Reset min-height for mobile */
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative; /* Disable sticky on mobile as originally intended */
+        top: auto;
+        padding: 20px;
+    }
 }
 
-.publications-list li p {
-  line-height: 1.5; /* Normal line spacing for the paragraph */
-  margin-top: 10px; /* Optional: Add space above the paragraph for clarity */
+.updates-list {
+    list-style-position: outside; /* Standard bullets outside the content */
+    list-style-type: disc; /* Keep the bullet points */
+    padding-left: 0; /* Remove default list padding */
+    margin-left: 0; /* Align the bullets to the parent container */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    line-height: 0.9;
 }
 
-@media screen and (max-width: 900px) {
-  .publications-list li {
-    flex-direction: column; /* Stack the image on top of the text */
-    align-items: flex-start; /* Align items to the start of the container */
-  }
-
-  .publication-photo {
-    height: auto; /* Adjust height to maintain aspect ratio */
-    margin-bottom: 15px; /* Add space below the image */
-    margin-left: auto; /* Center the image horizontally */
-    margin-right: auto; /* Center the image horizontally */
-    display: block; /* Ensure it's treated as a block element for centering */
-  }
-
-  .icon-link-paper {
-    margin-top: 10px; /* Add space above the icons */
-  }
+.updates-list li {
+    display: flex; /* Align date and text in one line */
+    align-items: flex-start; /* Align items at the top */
+    margin-bottom: 10px; /* Add spacing between updates */
+    list-style-type: disc; /* Standard bullet point style */
+    color: #3a3a3a; /* Dark gray color */
 }
 
-.lightbulb-image {
-  display: block; /* Centers the image horizontally */
-  margin: 15px auto; /* Add vertical spacing and center it horizontally */
-  width: 150px; /* Set a fixed width for the image */
-  height: auto; /* Maintain aspect ratio */
-  transition: transform 0.3s ease, filter 0.3s ease;
+.date-box {
+    font-weight: bold; /* Make the date bold */
+    min-width: 80px; /* Reserve space for date to align text */
+    margin-right: 10px; /* Space between date and text */
+    text-align: left; /* Align date text to the left */
+    color: #000000; /* Dark gray color */
 }
 
-.lightbulb-image:hover {
-  transform: scale(1.05); /* Slightly increase size on hover */
-  filter: brightness(1.15); /* Brighten image on hover */
+.update-text {
+    flex: 1; /* Ensure text aligns consistently */
 }
 
-@media screen and (max-width: 600px) {
-  .lightbulb-image {
-    width: 70%; /* Make image responsive on small screens */
-  }
+/* Publications Section */
+.publication {
+    display: flex; /* Align image and text side-by-side */
+    align-items: flex-start; /* Align items at the top */
+    margin-bottom: 20px; /* Add space between publications */
+    gap: 20px; /* Space between image and text */
 }
+
+.publication-image {
+    width: 175px; /* Fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Rounded corners for the image */
+    object-fit: cover; /* Ensure the image is not distorted */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.publication-details {
+    flex: 1; /* Take up the remaining space */
+}
+
+.publication-title {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Slightly larger font for the title */
+    font-weight: bold; /* Make the title bold */
+    color: #3a3a3a; /* Dark text color */
+}
+
+.publication-authors {
+    margin: 5px 0; /* Add a small margin for spacing */
+    font-size: 0.9rem; /* Slightly smaller font for authors */
+    color: #3a3a3a; /* Lighter text color for contrast */
+}
+
+.publication-bio {
+    font-size: 0.9rem; /* Standard font size for the bio */
+    color: #3a3a3a; /* Subtle text color for readability */
+    margin: 10px 0; /* Add spacing between bio and links */
+}
+
+.publication-links {
+    display: flex; /* Align links in a row */
+    gap: 10px; /* Space between links */
+}
+
+.publication-link {
+    font-size: 0.9rem; /* Standard font size for links */
+    color: #007BFF; /* Link color */
+    text-decoration: none; /* Remove underline */
+    border: 1px solid #007BFF; /* Add a border to the link */
+    padding: 2px 10px; /* Add padding inside the link */
+    border-radius: 5px; /* Rounded corners for the links */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+.publication-link:hover {
+    background-color: #007BFF; /* Highlight background on hover */
+    color: white; /* Change text color on hover */
+}
+
