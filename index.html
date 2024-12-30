@@ -28,10 +28,11 @@
         <!-- Main Content -->
         <div class="content">
             <h3>About Me</h3>
-            <p>Hello! I'm an Information Science PhD student in the Bowers College of Computing and Information Science (CIS) at Cornell University. I work in the Future of Learning Lab, where I am advised by Professor Rene Kizilcec. My research is generously supported by the Bowers CIS Dean's Excellence and Hopper-Dean Fellowship.</p>
+            <p>Hello! I'm an Information Science PhD student in the <a href="https://cis.cornell.edu/" target="_blank" ref="noopener noreferer">Bowers College of Computing and Information Science</a> (CIS) at <a href="https://www.cornell.edu/" target="_blank" ref="noopener noreferer">Cornell University</a>. I work in the <a href="https://learning.cis.cornell.edu/" target="_blank" ref="noopener noreferer">Future of Learning Lab</a>, where I am advised by Professor <a href="https://rene.kizilcec.com/" target="_blank" ref="noopener noreferer">Rene Kizilcec</a>. As a <a href="https://gradschool.cornell.edu/diversity-inclusion/signature-initiatives/graduate-school-deans-scholars/" target="_blank" ref="noopener noreferer">Graduate School Dean's Scholar</a>, my research is generously supported by the Bowers CIS Dean's Excellence and Hopper-Dean Fellowship.</p>
             <p>My research broadly focuses on educational technology. I create educational tools that shape pedagogical approaches, measure student understanding, and encourage inclusive, enjoyable, and equitable learning environments. Education is crucial for illuminating life pathways, promoting sociocultural awareness, and inspiring innovation. My research in educational technology works to advance these fundamental goals.</p>
-            <p>Before coming to Cornell, I completed my MS in Computer Science and BS in Mathematics at Stanford University. I was advised by the amazing Chris Piech, Emma Brunskill, and Chris Gregg in computer science, and Christine Taylor in mathematics. I was also kindly supported by the Stanford VPUE STEM Fellowship.</p>
-            <h3>What's New?</h3>
+            <p>Before coming to Cornell, I completed my MS in Computer Science and BS in Mathematics at <a href="https://www.stanford.edu/" target="_blank" ref="noopener noreferer">Stanford University</a>. I was advised by the amazing <a href="https://stanford.edu/~cpiech/bio/index.html" target="_blank" ref="noopener noreferer">Chris Piech</a>, <a href="https://cs.stanford.edu/people/ebrun/" target="_blank" ref="noopener noreferer">Emma Brunskill</a>, and <a href="https://web.stanford.edu/~cgregg/chris-gregg/" target="_blank" ref="noopener noreferer">Chris Gregg</a> in computer science, and <a href="https://mathematics.stanford.edu/people/christine-taylor" target="_blank" ref="noopener noreferer">Christine Taylor</a> in mathematics. I was also kindly supported by the Stanford VPUE STEM Fellowship.</p>       
+
+            <h3 style="margin-top: 50px;">What's New?</h3>
             <ul class="updates-list">
                 <li>
                     <span class="date-box">Nov 2024</span>
@@ -59,8 +60,8 @@
                 </li>
             </ul>
             
-            
-            <h3>Research</h3>
+            <h3 style="margin-top: 50px;">Research</h3>
+            <p style="margin-top: -10px; color: #818181;">* indicates equal contribution.</p>
             <div class="publication">
 
                 <img src="images/edm2024.png" alt="EDM 2024" class="publication-image">
@@ -69,7 +70,7 @@
                     <p class="publication-authors">Yunsung Kim*, <strong>Jadon Geathers*</strong>, Chris Piech</p>
                     <p class="publication-bio">StochasticGrade is an open-source framework for automatically grading stochastic programs. Compared to standard two-sample hypothesis testing, it offers significant improvements in accuracy, exponential improvements in speed, control over grading error rates, and clustering of student programs by error type. We demonstrate its effectiveness using data from introductory programming assignments and provide practical guidelines for implementation.</p>
                     <div class="publication-links">
-                        <a href="https://github.com/jadongeathers/jadongeathers.github.io/blob/main/papers/edm2024_paper.pdf" class="publication-link">Paper</a>
+                        <a href="https://educationaldatamining.org/edm2024/proceedings/2024.EDM-long-papers.4/" class="publication-link">Paper</a>
                         <a href="https://github.com/yunsungkim0908/stochasticgrade" class="publication-link">GitHub</a>
                         <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:a6QE4rsIzzsJ:scholar.google.com/&output=citation&scisdr=ClH1pTUYEJTKtvpeLDo:AFWwaeYAAAAAZ0tYNDrtKjwP8sZbeFpVf4tJrKM&scisig=AFWwaeYAAAAAZ0tYNFNf_SiRwYxV9GVpKm5xicc&scisf=4&ct=citation&cd=-1&hl=en" class="publication-link">BibTeX</a>
                     </div>
@@ -77,7 +78,24 @@
             </div>
 
             <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=TGXWDgSi-FdI2zc3Qlu8KZJXMqL3IPd0yoePjMqs9sY&cl=ffffff&w=a"></script>
+
+            <script>
+            document.addEventListener('scroll', () => {
+                const imageContainer = document.querySelector('.image-container img');
+                const scrollPosition = window.scrollY; // Get current scroll position
+                const imageHeight = imageContainer.offsetHeight;
+                const windowHeight = window.innerHeight;
+
+                // Calculate the top position based on scroll
+                const maxScroll = document.body.scrollHeight - windowHeight;
+                const imageTop = (scrollPosition / maxScroll) * (imageHeight - windowHeight);
+
+                // Update the image position
+                imageContainer.style.top = `${-imageTop}px`;
+            });
+            </script>
             
+
         </div>
     </div>
 </body>

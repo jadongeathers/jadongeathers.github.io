@@ -6,6 +6,15 @@ body {
     color: black;
 }
 
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .profile-picture-container {
     display: inline-block; /* Wrap the image */
     padding: 5px; /* Add space around the image */
@@ -226,4 +235,8 @@ body {
     background-color: #007BFF; /* Highlight background on hover */
     color: white; /* Change text color on hover */
 }
+
+
+
+
 
