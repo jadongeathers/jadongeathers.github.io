@@ -7,9 +7,22 @@ body {
 }
 
 a {
-    color: #007BFF;
-    text-decoration: none;
+    color: #0056b3; /* Updated to a professional dark blue */
+    text-decoration: none; /* Removes underline globally */
 }
+
+/* Link style for paragraphs */
+p a {
+    text-decoration: none; /* Ensures no underline specifically in paragraphs */
+    font-weight: 500; /* Optional: Slightly bolder text for emphasis */
+    color: #0056b3; /* Consistent with overall link style */
+}
+
+p a:hover {
+    text-decoration: underline; /* Adds underline on hover for feedback */
+    color: #003d80; /* Slightly darker shade of blue for hover */
+}
+
 
 a:hover {
     text-decoration: underline;
@@ -235,6 +248,14 @@ a:hover {
     background-color: #007BFF; /* Highlight background on hover */
     color: white; /* Change text color on hover */
 }
+
+#mapmyvisitors {
+    width: 100%; /* Adjust width as needed */
+    max-width: 600px; /* Limit the width to 600px */
+    height: 300px; /* Set a fixed height */
+    margin: 0 auto; /* Center the map horizontally */
+}
+
 
 
 
