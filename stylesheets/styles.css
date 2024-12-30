@@ -6,6 +6,62 @@ body {
     color: black;
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 175px;
+    padding: 40px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+}
+
+/* Fade-in Animation */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeInX {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.animate-sidebar,
+.animate-content {
+    opacity: 0;
+}
+
+.animate-sidebar.fade-in {
+    animation: fadeInSlide 1s ease-in-out forwards;
+}
+
+.animate-content.fade-in {
+    animation: fadeInX 1s ease-in-out forwards;
+}
+
 a {
     color: #0056b3; /* Updated to a professional dark blue */
     text-decoration: none; /* Removes underline globally */
@@ -41,27 +97,6 @@ a:hover {
     border-radius: 50%; /* Make it circular */
     object-fit: cover; /* Ensures the image fills the area without distortion */
     display: block;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: white;
-    min-height: 100vh; /* Add this to ensure container has height */
-}
-
-.sidebar {
-    width: 175px;
-    padding: 40px;
-    text-align: left;
-    flex-shrink: 0;
-    position: sticky;  /* Remove -webkit-sticky as it's not needed for modern browsers */
-    top: 0;           /* Change from 20px to 0 */
-    align-self: flex-start; /* Add this to ensure proper sticky behavior */
-    height: fit-content; /* Add this to contain sidebar content */
 }
 
 .sidebar h3 {
