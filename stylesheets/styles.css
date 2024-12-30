@@ -125,6 +125,12 @@ a:hover {
     font-size: 0.9rem;
 }
 
+.content p a {
+    text-decoration: none; /* Ensures no underline specifically in paragraphs */
+    font-weight: 500; /* Optional: Slightly bolder text for emphasis */
+    color: #0056b3; /* Consistent with overall link style */
+}
+
 /* First Fixed Size: Large Screens */
 @media (max-width: 1200px) {
     .content {
