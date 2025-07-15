@@ -1,0 +1,223 @@
+/* Footer Styles - Full Width with Dark Theme */
+.site-footer {
+  background: #1a1a1a;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Main footer navigation */
+.footer-nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  min-height: 70px;
+}
+
+/* Footer title */
+.footer-left {
+  flex: 1;
+}
+
+.footer-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  font-family: 'Inter Tight', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Footer center navigation */
+.footer-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-menu {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.footer-menu a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+.footer-menu a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-menu a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.footer-menu a:hover::after {
+  width: 100%;
+}
+
+/* Footer right links */
+.footer-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* Copyright section */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 16px 0;
+}
+
+.footer-copyright {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.footer-copyright p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .footer-nav-container { 
+    padding: 25px 30px; 
+  }
+  .footer-copyright {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .footer-nav-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 30px;
+  }
+  
+  .footer-left, .footer-center, .footer-right {
+    flex: none;
+  }
+  
+  .footer-center {
+    order: 1;
+  }
+  
+  .footer-left {
+    order: 2;
+  }
+  
+  .footer-right {
+    order: 3;
+    justify-content: center;
+  }
+  
+  .footer-menu {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    margin-top: 60px;
+  }
+  
+  .footer-nav-container {
+    padding: 25px 20px;
+  }
+  
+  .footer-menu {
+    gap: 20px;
+  }
+  
+  .footer-links {
+    gap: 12px;
+  }
+  
+  .footer-link {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+  
+  .footer-copyright {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-nav-container { 
+    padding: 20px 15px; 
+  }
+  
+  .footer-menu {
+    gap: 16px;
+  }
+  
+  .footer-menu a {
+    font-size: 0.9rem;
+  }
+  
+  .footer-title {
+    font-size: 1.2rem;
+  }
+  
+  .footer-copyright {
+    padding: 0 15px;
+  }
+}

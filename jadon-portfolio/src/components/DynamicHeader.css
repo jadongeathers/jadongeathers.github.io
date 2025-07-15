@@ -1,0 +1,191 @@
+/* --- Base Dynamic Header Styles --- */
+.dynamic-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important; /* Force full viewport width */
+  z-index: 1000;
+  padding: 20px 0;
+  transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Hero state (default) */
+.dynamic-header {
+  background: rgba(10, 10, 10, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Page state */
+.dynamic-header.page-header {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(107, 114, 128, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 16px 0;
+}
+
+/* --- Main Layout and Spacing --- */
+.nav-container {
+  width: 100% !important;
+  max-width: none !important; /* Remove any max-width constraints */
+  padding: 0 80px !important; /* Increased margin significantly */
+  margin: 0 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box !important;
+}
+
+/* NAME STYLING - Force white color in hero state */
+.nav-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: 'Inter Tight', sans-serif;
+  text-decoration: none;
+  color: white !important;
+  transition: color 0.3s ease;
+}
+
+/* Override for page state */
+.dynamic-header.page-header .nav-title {
+  color: #2d3748 !important;
+}
+
+.nav-title:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: none;
+}
+
+.dynamic-header.page-header .nav-title:hover {
+  color: #5a6c57 !important;
+}
+
+/* NAVIGATION LINKS */
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  padding: 8px 0; /* Add padding for the underline effect */
+  transition: color 0.3s ease;
+}
+
+.nav-menu-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* Animated underline effect on hover */
+.nav-menu-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-menu-link:hover::after {
+  width: 100%;
+}
+
+/* Active state styling */
+.nav-menu-link.active {
+  color: white;
+  font-weight: 600;
+}
+
+.nav-menu-link.active::after {
+  width: 100%;
+  background-color: white;
+}
+
+/* Page state link colors */
+.dynamic-header.page-header .nav-menu-link {
+  color: #4a5568;
+}
+
+.dynamic-header.page-header .nav-menu-link:hover {
+  color: #5a6c57;
+}
+
+.dynamic-header.page-header .nav-menu-link::after {
+  background-color: #5a6c57;
+}
+
+.dynamic-header.page-header .nav-menu-link:hover::after {
+  background-color: #5a6c57;
+}
+
+.dynamic-header.page-header .nav-menu-link.active {
+  color: #5a6c57;
+}
+
+.dynamic-header.page-header .nav-menu-link.active::after {
+  background-color: #5a6c57;
+}
+
+/* SOCIAL ICONS */
+.nav-icon-link {
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-icon-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.dynamic-header.page-header .nav-icon-link {
+  color: #2d3748;
+}
+
+.dynamic-header.page-header .nav-icon-link:hover {
+  color: #5a6c57;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+  .nav-container {
+    padding: 0 50px !important;
+  }
+  .nav-right {
+    gap: 45px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-container {
+    padding: 0 40px !important;
+  }
+  .nav-right {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 30px !important;
+  }
+  .nav-menu-link {
+    display: none; 
+  }
+  .nav-right {
+    gap: 30px;
+  }
+}

@@ -1,0 +1,221 @@
+/* --- FONT STRATEGY --- */
+/* Import Inter Tight for headings and Inter for body text */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800;900&display=swap');
+
+/* Styles for HeroSection and its top navigation bar */
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    color: white;
+}
+
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px 8% 60px 15%;
+}
+
+.hero-content {
+    max-width: 700px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    text-align: left;
+}
+
+/* Hero title - just fade in, no translate */
+.hero-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 3.2rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: heroTitleFadeIn 0.8s ease-out 0.2s both; /* Faster start */
+}
+
+/* Container for the subtitle, keeps the nice border effect */
+.hero-statement {
+    border-left: 3px solid rgba(255, 255, 255, 0.5);
+    padding-left: 25px;
+    opacity: 0;
+    animation: heroStatementSlideIn 0.8s ease-out 0.8s both; /* Starts after title */
+}
+
+/* Subtitle and affiliation styling */
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    opacity: 0.95;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.hero-affiliation {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin: 4px 0 0 0;
+}
+
+/* This class was in your original file but not used in the JSX, keeping it for potential future use */
+.hero-description-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin: 10px 0 0 0;
+}
+
+/* Title animation - just fade in */
+@keyframes heroTitleFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Statement animation - slide in from left */
+@keyframes heroStatementSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- Site Header (Top Nav Bar) --- */
+/* KEY: Use Inter for all UI elements for a modern, cohesive feel */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    background: rgba(10, 10, 10, 0.25);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Inter Tight', sans-serif;
+    color: white;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-menu a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+    color: white;
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+/* --- Responsive Styles for Hero/Header --- */
+@media (max-width: 1200px) {
+    .nav-container { padding: 0 30px; }
+    .hero-title { font-size: 3.2rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+}
+
+@media (max-width: 992px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .hero-section {
+        height: 80vh;
+    }
+    .hero-title { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .nav-left { flex-direction: column; gap: 15px; }
+}
+
+@media (max-width: 600px) {
+    .nav-container { padding: 0 20px; }
+    .hero-section { height: 100vh; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-overlay { padding: 60px 6% 60px 12%; }
+}

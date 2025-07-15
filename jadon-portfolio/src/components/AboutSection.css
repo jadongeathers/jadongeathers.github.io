@@ -1,0 +1,152 @@
+/* Styles for the About Section component */
+
+.about-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  margin: 80px auto;
+  max-width: 1200px;
+  padding: 0 60px;
+}
+
+/* --- Column 1: Text Content --- */
+.about-content-wrapper {
+  flex-basis: 62%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.about-title {
+  font-family: 'Inter Tight', sans-serif; /* Changed to condensed font for heading */
+  font-size: 2.5rem;
+  font-weight: 800; /* Strong weight for Inter Tight */
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+}
+
+.about-content-wrapper p {
+  font-family: 'Inter', sans-serif; /* Changed from STIX Two Text */
+  color: #2a2a2a;
+  font-size: 1.1rem; 
+  line-height: 1.6;
+  margin-bottom: 1.4em;
+  font-weight: 400;
+}
+
+/* --- Column 2: Image & Button --- */
+
+/* KEY CHANGE: This container now stacks items vertically and centers them horizontally */
+.about-image-column {
+  flex-basis: 38%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;     /* Stack image and button vertically */
+  align-items: center;         /* Center both items horizontally */
+  justify-content: flex-start; /* Align content to the top of the column */
+}
+
+.about-profile-picture {
+  width: 85%; /* Using percentage keeps it responsive within its column */
+  max-width: 340px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block; /* Ensures it behaves like a block element */
+}
+
+/* Update the button styles to be square and add button group */
+.about-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.about-action-button {
+  display: inline-block;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  border-radius: 4px; /* Square corners */
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.about-action-button.primary {
+  background: linear-gradient(135deg, #5a6c57, #7a8471);
+  color: #ffffff;
+}
+
+.about-action-button.primary:hover {
+  background: linear-gradient(135deg, #4a5a47, #6a7261);
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(90, 108, 87, 0.3);
+}
+
+.about-action-button.secondary {
+  background: transparent;
+  color: #5a6c57;
+  border-color: #5a6c57;
+}
+
+.about-action-button.secondary:hover {
+  background: #5a6c57;
+  color: #ffffff;
+  transform: translateY(-2px);
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(90, 108, 87, 0.3);
+}
+
+/* Remove or comment out the old .about-contact-button styles */
+
+/* --- Responsive Design --- */
+@media (max-width: 1000px) {
+  .about-container {
+    gap: 60px;
+    padding: 0 40px;
+    margin: 30px auto;
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .about-container {
+    flex-direction: column;
+    gap: 40px; /* Adjusted gap for mobile */
+    padding: 0 30px;
+    align-items: center;
+    text-align: left;
+    margin: 25px auto;
+  }
+  
+  .about-image-column {
+    width: 100%;
+    max-width: 400px;
+    order: -1; /* Move image and button to the top on mobile */
+  }
+  
+  .about-content-wrapper {
+    width: 100%;
+  }
+  
+  .about-title {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  
+  /* On mobile, the button is already centered by `.about-image-column`'s `align-items:center` */
+}

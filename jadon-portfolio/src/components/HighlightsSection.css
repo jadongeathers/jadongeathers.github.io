@@ -1,0 +1,182 @@
+/* Highlights Section Styles - Full Width with Cool Green Background */
+.highlights-section {
+  background-color: #8A9D87;
+  padding: 80px 0;
+  margin-top: 80px;
+  font-family: 'Inter', sans-serif; /* Changed from STIX Two Text */
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1400px; /* Increased from 1200px */
+  margin: 0 auto;
+  padding: 0 20px; /* Reduced from 40px */
+}
+
+/* Individual Highlight Card */
+.highlight-card {
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-top: 15px solid white;
+}
+
+.highlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Increased from 180px */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.highlight-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.highlight-card:hover .highlight-image {
+  transform: scale(1.05);
+}
+
+/* Video-specific styling - Removed overlay styles */
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.highlight-content {
+  padding: 20px 24px 24px 24px; /* Reduced top padding from 24px to 20px */
+}
+
+.highlight-title {
+  font-size: 1.2rem !important; /* Reduced from 1.4rem */
+  font-weight: 600 !important;
+  color: #1a1a1a;
+  margin-bottom: 14px !important;
+  line-height: 1.3;
+  font-family: 'Inter Tight', sans-serif;
+  letter-spacing: 0.02em !important;
+}
+
+.highlight-description {
+  font-size: 0.9rem !important; /* Reduced from 1rem */
+  line-height: 1.6 !important;
+  color: #3a3a3a;
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+
+.highlight-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: #666;
+  font-family: 'Inter', sans-serif; /* Explicitly set for consistency */
+}
+
+.highlight-date {
+  font-weight: 500;
+}
+
+.highlight-source {
+  font-style: italic;
+  font-weight: 400; /* Inter looks better with normal weight for italics */
+}
+
+.highlight-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.highlight-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif; /* Explicitly set for consistency */
+  transition: color 0.3s ease;
+}
+
+.highlight-link:hover {
+  color: #003d80;
+  text-decoration: none;
+}
+
+.highlight-link.secondary {
+  color: #666;
+}
+
+.highlight-link.secondary:hover {
+  color: #333;
+}
+
+.highlight-link i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.highlight-link:hover i {
+  transform: translateX(2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .highlights-section {
+    padding: 60px 0;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 15px; /* Reduced from 30px */
+  }
+  
+  .highlight-image-container {
+    height: 180px; /* Increased from 160px */
+  }
+  
+  .highlight-content {
+    padding: 16px 20px 20px 20px; /* Reduced top padding */
+  }
+  
+  .highlight-title {
+    font-size: 1.1rem;
+  }
+  
+  .highlight-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .highlights-grid {
+    padding: 0 10px; /* Reduced from 20px */
+  }
+}
