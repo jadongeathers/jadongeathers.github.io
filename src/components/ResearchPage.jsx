@@ -136,7 +136,7 @@ const ResearchPage = () => {
     title: "ChitterChatter",
     description: "AI-powered speaking partners for language learning classrooms. Educators create curriculum-aligned, voice-enabled conversation activities that adapt to student needs and promote confident speaking practice.",
     features: ["Voice Recognition", "Curriculum Alignment", "Real-time Feedback", "Adaptive Learning"],
-    videoUrl: "images/ChitterChatter Demo.mp4", // Update with actual video path
+    videoUrl: "images/chitterchatter_demo.mp4", // Update with actual video path
     demoUrl: "https://chitterchatter.app", // Update with actual demo URL
     githubUrl: "https://github.com/jadongeathers/ChitterChatter"
   };
