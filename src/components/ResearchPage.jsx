@@ -160,7 +160,7 @@ const ResearchPage = () => {
       abstract: "Through semi-structured interviews with ten medical students across three U.S. institutions, we examined how students engage with simulation-based learning (SBL) within their broader learning contexts. Our thematic analysis identified adaptive learning strategies developed in response to time constraints, limited formal guidance, and a fragmented educational landscape. This study provides critical learner-centered design insights intended to inform the development of scalable solutions—particularly digital or AI-driven platforms—that can address these limitations and better support learning in high-pressure professional education.",
       image: "images/l@s2025_medical.png",
       links: {
-        paper: "coming-soon"
+        paper: "https://dl.acm.org/doi/10.1145/3698205.3733954"
       }
     },
     {
