@@ -149,7 +149,7 @@ const ResearchPage = () => {
       abstract: "ChitterChatter addresses the challenge of limited speaking practice in language learning by providing an AI-powered tool that enables instructors to create curriculum-aligned, voice-enabled conversation activities for students. Built on OpenAI's Realtime API and designed through iterative feedback from language education experts, ChitterChatter offers personalized, adaptive speaking practice while maintaining a judgment-free environment that promotes student comfort and confidence.",
       image: "images/l@s2025_chitterchatter.png",
       links: {
-        paper: "coming-soon",
+        paper: "https://dl.acm.org/doi/10.1145/3698205.3733953",
         github: "https://github.com/jadongeathers/ChitterChatter"
       }
     },
@@ -170,7 +170,7 @@ const ResearchPage = () => {
       abstract: "This study explored the potential of large language models (LLMs) to automate OSCE evaluations using the Master Interview Rating Scale (MIRS). We compared the performance of four state-of-the-art LLMs (GPT-4o, Claude 3.5, Llama 3.1, and Gemini 1.5 Pro) in evaluating OSCE transcripts across all 28 items of the MIRS under various prompting conditions. Our work provides a baseline performance assessment for LLMs that lays a foundation for future research into automated assessment of clinical communication skills.",
       image: "images/aied2025.png",
       links: {
-        paper: "coming-soon"
+        paper: "https://dl.acm.org/doi/10.1007/978-3-031-98420-4_17"
       }
     },
     {
