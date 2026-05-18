@@ -80,6 +80,11 @@ const MENU_BAR_HEIGHT = 30;
 const ICON_POS_KEY = 'icon-positions-v1';
 const DRAG_THRESHOLD = 5; // px before a press becomes a drag rather than a click
 
+const VISITOR_SCRIPT_ID = 'mapmyvisitors';
+const VISITOR_SCRIPT_SRC =
+  '//mapmyvisitors.com/map.js?d=TGXWDgSi-FdI2zc3Qlu8KZJXMqL3IPd0yoePjMqs9sY&cl=ffffff&w=a';
+export const VISITOR_HOST_ID = 'visitor-map-host';
+
 function defaultIconPositions() {
   // Left column, starting just below the menu bar
   const startX = 24;
@@ -232,6 +237,22 @@ const Desktop = ({ profileData }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Load the visitor-map script once on first site visit so the view registers
+  // even if the user never opens the Visitors window. The map renders into a
+  // permanent hidden host node; VisitorsContent reparents the node when the
+  // window opens, preserving the already-rendered map.
+  const visitorHostRef = useRef(null);
+  useEffect(() => {
+    const host = visitorHostRef.current;
+    if (!host) return;
+    if (document.getElementById(VISITOR_SCRIPT_ID)) return;
+    const s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.id = VISITOR_SCRIPT_ID;
+    s.src = VISITOR_SCRIPT_SRC;
+    host.appendChild(s);
+  }, []);
+
   const closeWindow = useCallback((id) => {
     setWindowsById((prev) => {
       if (!prev[id] || prev[id].isClosing) return prev;
@@ -362,6 +383,15 @@ const Desktop = ({ profileData }) => {
       </div>
 
       <DesktopPhotos />
+
+      {/* Persistent off-screen host where the mapmyvisitors widget lives.
+          VisitorsContent moves this node into the open window and back. */}
+      <div
+        id={VISITOR_HOST_ID}
+        ref={visitorHostRef}
+        className="visitor-map-host"
+        aria-hidden="true"
+      />
 
       {order.map((id, i) => {
         const w = windowsById[id];

@@ -422,6 +422,31 @@ a:hover { color: var(--accent-red); }
 .vmap-canvas:has(img) .vmap-loading,
 .vmap-canvas:has(iframe) .vmap-loading { display: none; }
 
+/* Persistent host for the mapmyvisitors widget. Lives off-screen so the
+   script can load and register the view on every site visit, but stays
+   invisible until the Visitors window is opened and adopts the node. */
+.visitor-map-host {
+  position: fixed;
+  left: -10000px;
+  top: -10000px;
+  width: 600px;
+  height: 400px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: -1;
+}
+
+.visitor-map-host--exposed {
+  position: static;
+  left: auto;
+  top: auto;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  opacity: 1;
+  z-index: auto;
+}
+
 /* ===========================================================
    Desktop plant (always-on corner element, draggable)
    =========================================================== */

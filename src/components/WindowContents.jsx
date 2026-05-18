@@ -473,25 +473,33 @@ export const CVContent = () => {
 
 /* ---------- Visitors window content ---------- */
 
-const VISITOR_SCRIPT_ID = 'mapmyvisitors';
-const VISITOR_SCRIPT_SRC =
-  '//mapmyvisitors.com/map.js?d=TGXWDgSi-FdI2zc3Qlu8KZJXMqL3IPd0yoePjMqs9sY&cl=ffffff&w=a';
+// The mapmyvisitors widget is mounted once at site load into a persistent
+// hidden host node (see Desktop.jsx) so the view registers on every visit.
+// When the Visitors window opens, we move the host node into the visible
+// slot via appendChild — moving DOM nodes preserves the rendered map and
+// doesn't trigger a reload (which would double-count the visit).
+const VISITOR_HOST_ID = 'visitor-map-host';
 
 export const VisitorsContent = () => {
-  const mountRef = React.useRef(null);
+  const slotRef = React.useRef(null);
 
   React.useEffect(() => {
-    const mount = mountRef.current;
-    if (!mount) return;
-    if (document.getElementById(VISITOR_SCRIPT_ID)) {
-      // Script already loaded earlier — duplicate widget node
-      return;
-    }
-    const s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.id = VISITOR_SCRIPT_ID;
-    s.src = VISITOR_SCRIPT_SRC;
-    mount.appendChild(s);
+    const slot = slotRef.current;
+    const host = document.getElementById(VISITOR_HOST_ID);
+    if (!slot || !host) return;
+
+    const originalParent = host.parentNode;
+    const originalNextSibling = host.nextSibling;
+
+    host.classList.add('visitor-map-host--exposed');
+    slot.appendChild(host);
+
+    return () => {
+      host.classList.remove('visitor-map-host--exposed');
+      if (originalParent) {
+        originalParent.insertBefore(host, originalNextSibling);
+      }
+    };
   }, []);
 
   return (
@@ -500,7 +508,7 @@ export const VisitorsContent = () => {
         <h1>Visitors</h1>
         <p className="page-intro">A live map of where folks visiting this site have dropped in from.</p>
       </header>
-      <div className="vmap-canvas in-window" ref={mountRef}>
+      <div className="vmap-canvas in-window" ref={slotRef}>
         <div className="vmap-loading">connecting…</div>
       </div>
     </div>
