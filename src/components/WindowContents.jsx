@@ -615,6 +615,25 @@ export const DesktopPhotos = () => {
       try { localStorage.setItem('photos-pos', JSON.stringify({ left: el.style.left, top: el.style.top })); } catch {}
     };
 
+    // Keep the photo on-screen. A position saved on a larger window — or one
+    // that becomes invalid after the window is resized smaller — can place the
+    // photo off-screen, making it seem to "disappear". Only nudge it when it's
+    // actually out of bounds, so the default corner placement is left alone on
+    // normal loads.
+    const ensureInView = () => {
+      const rect = el.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const maxLeft = window.innerWidth - rect.width - 8;
+      const maxTop = window.innerHeight - rect.height - 44;
+      const outOfBounds =
+        rect.left < 4 || rect.top < 34 || rect.left > maxLeft + 4 || rect.top > maxTop + 4;
+      if (!outOfBounds) return;
+      el.style.left = `${Math.max(8, Math.min(maxLeft, rect.left))}px`;
+      el.style.top = `${Math.max(38, Math.min(maxTop, rect.top))}px`;
+      el.style.right = 'auto';
+      el.style.bottom = 'auto';
+    };
+
     try {
       const saved = JSON.parse(localStorage.getItem('photos-pos') || 'null');
       if (saved?.left && saved?.top) {
@@ -625,13 +644,17 @@ export const DesktopPhotos = () => {
       }
     } catch {}
 
+    requestAnimationFrame(ensureInView);
+
     el.addEventListener('mousedown', onDown);
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseup', onUp);
+    window.addEventListener('resize', ensureInView);
     return () => {
       el.removeEventListener('mousedown', onDown);
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('resize', ensureInView);
     };
   }, []);
 

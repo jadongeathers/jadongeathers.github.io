@@ -310,7 +310,10 @@ a:hover { color: var(--accent-red); }
   cursor: pointer;
   text-align: center;
   z-index: 5;
-  width: auto;
+  /* Fixed width keeps every icon's art aligned in a column. Labels (e.g. the
+     longer "ChitterChatter") stay centered under the art and simply overflow
+     this box instead of widening it and shoving the art off-center. */
+  width: 64px;
 }
 
 .desktop-icon.dragging { cursor: grabbing; opacity: 0.85; }
@@ -395,6 +398,22 @@ a:hover { color: var(--accent-red); }
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+/* The mapmyvisitors widget renders a fixed 600px-wide SVG (with no viewBox)
+   inside these wrappers, which overflows narrower windows. Desktop.jsx adds a
+   viewBox so the SVG can scale; these rules then let it and its wrappers shrink
+   to the container width instead of being clipped. */
+.vmap-canvas .mapmyvisitors-map,
+.vmap-canvas .jvectormap-container {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.vmap-canvas svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 .vmap-canvas img,
