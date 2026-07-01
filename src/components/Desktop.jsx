@@ -58,7 +58,7 @@ const WINDOW_CATALOG = {
   visitors: {
     title: 'Visitors',
     icon: 'images/icons/visitors.png',
-    defaultSize: { w: 620, h: 560 },
+    defaultSize: { w: 700, h: 600 },
     render: () => <VisitorsContent />,
   },
 };
@@ -245,38 +245,12 @@ const Desktop = ({ profileData }) => {
   useEffect(() => {
     const host = visitorHostRef.current;
     if (!host) return;
-
-    // The mapmyvisitors widget renders a fixed-width SVG with no viewBox, so it
-    // overflows (and gets clipped in) narrower windows. Give the SVG a viewBox
-    // derived from its width/height so it scales to fit its container; CSS then
-    // handles the width. The viewBox makes scaling self-maintaining on resize,
-    // so we only need to apply it once the map renders.
-    const normalizeMap = () => {
-      const svg = host.querySelector('svg');
-      if (!svg || svg.getAttribute('viewBox')) return false;
-      const w = parseInt(svg.getAttribute('width'), 10) || svg.clientWidth || 600;
-      const h = parseInt(svg.getAttribute('height'), 10) || svg.clientHeight || 294;
-      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-      svg.removeAttribute('width');
-      svg.removeAttribute('height');
-      return true;
-    };
-
-    const observer = new MutationObserver(() => {
-      if (normalizeMap()) observer.disconnect();
-    });
-    observer.observe(host, { childList: true, subtree: true });
-    normalizeMap();
-
-    if (!document.getElementById(VISITOR_SCRIPT_ID)) {
-      const s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.id = VISITOR_SCRIPT_ID;
-      s.src = VISITOR_SCRIPT_SRC;
-      host.appendChild(s);
-    }
-
-    return () => observer.disconnect();
+    if (document.getElementById(VISITOR_SCRIPT_ID)) return;
+    const s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.id = VISITOR_SCRIPT_ID;
+    s.src = VISITOR_SCRIPT_SRC;
+    host.appendChild(s);
   }, []);
 
   const closeWindow = useCallback((id) => {

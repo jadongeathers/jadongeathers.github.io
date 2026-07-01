@@ -494,7 +494,38 @@ export const VisitorsContent = () => {
     host.classList.add('visitor-map-host--exposed');
     slot.appendChild(host);
 
+    // The mapmyvisitors widget renders at a fixed native size: a raster world
+    // map with a separate SVG dot overlay on top. The dots only line up with the
+    // map at that native scale, so rather than resizing the pieces (which slid
+    // the dots off the map), zoom the whole widget uniformly to fit the window.
+    // `zoom` scales the map image and the dot overlay together — keeping them
+    // aligned — and, unlike a transform, shrinks the layout box too so the
+    // widget stays centered without leaving a gap.
+    const getControl = () => host.querySelector('.mapmyvisitors-map-control');
+    const fit = () => {
+      const el = getControl();
+      if (!el) return;
+      el.style.zoom = '';
+      const nativeW = el.offsetWidth;
+      if (!nativeW) return;
+      const cs = getComputedStyle(slot);
+      const availW = slot.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      el.style.zoom = Math.min(1, availW / nativeW);
+    };
+
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(slot);
+    // The widget renders asynchronously; keep watching until it appears, fit it
+    // once, then stop (its internal live-dot animation shouldn't re-trigger us).
+    const mo = new MutationObserver(() => { if (getControl()) { fit(); mo.disconnect(); } });
+    mo.observe(host, { childList: true, subtree: true });
+
     return () => {
+      ro.disconnect();
+      mo.disconnect();
+      const el = getControl();
+      if (el) el.style.zoom = '';
       host.classList.remove('visitor-map-host--exposed');
       if (originalParent) {
         originalParent.insertBefore(host, originalNextSibling);

@@ -377,43 +377,21 @@ a:hover { color: var(--accent-red); }
 
 .vmap-canvas.in-window {
   flex: 1;
-  min-height: 440px;
-  padding: 24px;
+  min-height: 0;
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.vmap-canvas.in-window .mapmyvisitors-map-control,
-.vmap-canvas.in-window .mapmyvisitors-map-container {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100%;
-}
-
-.vmap-canvas.in-window img,
-.vmap-canvas.in-window canvas {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-/* The mapmyvisitors widget renders a fixed 600px-wide SVG (with no viewBox)
-   inside these wrappers, which overflows narrower windows. Desktop.jsx adds a
-   viewBox so the SVG can scale; these rules then let it and its wrappers shrink
-   to the container width instead of being clipped. */
-.vmap-canvas .mapmyvisitors-map,
-.vmap-canvas .jvectormap-container {
-  width: 100% !important;
-  max-width: 100%;
-}
-
-.vmap-canvas svg {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
+/* The mapmyvisitors widget is a fixed-size raster world map with a separate SVG
+   dot overlay; the two only line up at the widget's native scale. So we keep it
+   at native size (shrink-wrapped by the control) and let VisitorsContent scale
+   the whole widget uniformly with `zoom` to fit the window — that scales the map
+   and the dots together, keeping them aligned. */
+.vmap-canvas.in-window .mapmyvisitors-map-control {
+  display: inline-block;
 }
 
 .vmap-canvas img,
@@ -456,14 +434,10 @@ a:hover { color: var(--accent-red); }
 }
 
 .visitor-map-host--exposed {
-  position: static;
-  left: auto;
-  top: auto;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-  opacity: 1;
-  z-index: auto;
+  /* Dissolve the host's own box so the map widget becomes a direct child of the
+     flex canvas and gets centered by it (rather than pinned to the top-left of a
+     full-height host, which left a large empty gap below the scaled-down map). */
+  display: contents;
 }
 
 /* ===========================================================
